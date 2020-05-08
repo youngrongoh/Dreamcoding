@@ -1,0 +1,15 @@
+
+.parents {
+    width: 800px;
+    height: 800px;
+    background-color: orange;
+    margin: 0 auto;
+}
+
+.children {
+    width: 200px;
+    height: 200px;
+    background-color: orangered;
+    margin: 0 auto;
+    text-align: center;
+}
