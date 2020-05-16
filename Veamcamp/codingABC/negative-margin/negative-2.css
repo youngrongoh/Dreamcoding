@@ -1,0 +1,56 @@
+body {
+    background-color: #c8d8f4;
+}
+
+.header {
+    background-color: bisque;
+    height: 300px;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    margin: 5px;
+    float: left;
+    text-align: center;
+    line-height: 100px;
+    font-family: 'arial';
+    font-size: 50px;
+}
+
+.select {
+    background-color: orangered;
+    margin-left: -50px;
+    margin-right: -50px;
+}
+
+.contents {
+    background-color: white; 
+    width: 860px;
+    margin: -100px auto 100px auto;
+    padding: 50px;
+}
+
+
+body {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.box-wrapper {
+    width: 900px;
+    margin: 0 auto;
+}
+
+.map {
+    background-color: white;
+    padding: 50px;
+    text-align: center;
+    margin: 40px 0;
+    transition: all 1s;
+}
+.map:hover {
+    margin: 40px -100px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.2);
+}

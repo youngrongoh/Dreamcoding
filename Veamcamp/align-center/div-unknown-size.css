@@ -1,0 +1,32 @@
+
+.box {
+    background-color: white;
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    overflow: hidden;
+    
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    
+    transform: translate(-50%, -50%);
+}
+
+img {
+    width: 300px;
+}
+
+h2 {
+    color: orange;
+}
+
+p {
+    padding: 0 1rem;
+}
+
+body {
+    background-color: #ddd;
+}
+
+

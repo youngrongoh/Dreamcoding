@@ -1,0 +1,21 @@
+
+.box {
+    background-color: white;
+    width: 300px;
+    height: 300px;
+    margin: 50px auto;
+    text-align: center;
+    line-height: 300px;
+}
+
+body {
+    background-color: #999;
+}
+
+span {
+}
+
+.box img {
+    width: 30px;
+    vertical-align: middle;
+}

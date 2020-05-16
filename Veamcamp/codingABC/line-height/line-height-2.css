@@ -1,0 +1,28 @@
+
+.first, .second {
+    margin: 20px;
+    border: 1px solid #999;
+    padding: 20px;
+}
+
+.parent {
+    overflow: hidden;
+    background-color: white;
+    width: 960px;
+    margin: 50px auto;
+    font-size: 20px;
+    font-family: 'arial';
+    line-height: 1;
+}
+
+.first {
+    font-size: 30px;
+}
+
+.second {
+    font-size: 40px;
+}
+
+body {
+    background-color: #ddd;
+}

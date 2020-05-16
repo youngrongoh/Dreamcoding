@@ -1,0 +1,19 @@
+html {
+    background-color: #ddd;
+}
+.wrapper {
+    background-color: #222;
+    width: 140px;
+/*    overflow: hidden;*/
+/*    float: left;*/
+/*    position:absolute;*/
+/*    display: inline-block;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+}
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    margin: 20px;
+}

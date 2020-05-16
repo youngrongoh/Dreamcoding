@@ -1,0 +1,30 @@
+
+td {
+/*    height: 200px;*/
+}
+
+
+
+.cover {
+    background: url(https://user-images.githubusercontent.com/64844815/81797070-428e6180-9549-11ea-9166-4a7ded8c103a.jpg);
+    height: 100vh;
+    display: table;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+.cover-inner {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.box {
+    background-color: deepskyblue;
+    width: 400px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}

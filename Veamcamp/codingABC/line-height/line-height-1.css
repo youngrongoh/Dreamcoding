@@ -1,0 +1,19 @@
+
+.cover {
+    background-color: #336699;
+    height: 20vh;
+}
+
+.contents {
+    width: 80vw;
+    margin: 0 auto;
+}
+
+.wrapper {
+    
+}
+
+.contents p {
+    line-height: 1.5;
+    font-size: 30px;
+}
