@@ -195,7 +195,7 @@ p {
 
 .major__icon:hover i {
     color: var(--color-pink);
-    /* ERROR: not work transform when hover on this element */
+    /* ERROR: 'transform' is not work when hover on this element */
     transform: rotate(-30deg) scale(1.1);
 }
 
@@ -447,7 +447,7 @@ p {
 }
 
 .contact__links i:hover {
-    /* ERROR: not work transform when hover on this element */
+    /* ERROR: 'transform' is not work when hover on this element */
     transform: scale(1.1);
     color: var(--color-yellow);
 }
