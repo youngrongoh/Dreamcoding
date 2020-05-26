@@ -25,6 +25,9 @@
     --weight-bold: 700;
     --weight-semi-bold: 600;
     --weight-regular: 400;
+
+    /* Border-radius */
+    --border-radius: 4px;
 }
 
 /* Universal tags */
@@ -42,6 +45,16 @@ a {
 ul{
     list-style-type: none;
     color: var(--color-white);
+}
+.section__container {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+button {
+    cursor: pointer;
+    outline: none;
+    border-radius: var(--border-radius);
 }
 
 /* Typography */
@@ -103,5 +116,56 @@ p {
 
 .menu__items:hover {
     background-color: var(--color-dark-pink);
-
 }
+
+/* Home */
+#home {
+    background-image: url(imgs/home-background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 48px 0;
+}
+
+.profile {
+    width: 240px;
+    height: 240px;
+    border: 1px solid var(--color-white);
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.profile img {
+    height: 110%;
+    margin-left: -20%;
+    margin-top: -10%;
+}
+
+#home h1,
+#home p,
+#home .home__btn {
+    color: var(--color-white);
+}
+
+#home h1 {
+    font-size: var(--font-large);
+}
+
+#home p {
+    font-size: var(--font-medium);
+    font-weight: var(--weight-semi-bold);
+}
+
+.home__btn {
+    background-color: transparent;
+    border: 1px solid var(--color-white);
+    font-size: var(--font-regular);
+    font-weight: var(--weight-semi-bold);
+    padding: 8px 12px;
+    margin: 24px;
+}
+
+.home__btn:hover {
+    background-color: var(--color-dark-pink);
+}
+
