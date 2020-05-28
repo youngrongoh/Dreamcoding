@@ -122,6 +122,15 @@ p {
     background-color: var(--color-dark-pink);
 }
 
+.navbar__menu-hamburger {
+    display: none;
+    font-size: var(--font-medium);
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    cursor: pointer;
+}
+
 /* Home */
 #home {
     background-image: url(imgs/home-background.png);
@@ -411,13 +420,34 @@ p {
 .testimonial__speech-bubble {
     background-color: var(--color-white);
     padding: 26px;
+    position: relative;
 }
 
-.testimonial__avatar.left {
+.testimonial.left .testimonial__speech-bubble:after {
+    content: ' ';
+    position: absolute;
+    top: 30px;
+    left: -20px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent var(--color-white) transparent transparent;
+}
+
+.testimonial.right .testimonial__speech-bubble:after {
+    content: ' ';
+    position: absolute;
+    top: 30px;
+    right: -20px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent transparent var(--color-white);
+}
+
+.testimonial.left .testimonial__avatar {
     margin-right: 36px;
 }
 
-.testimonial__avatar.right {
+.testimonial.right .testimonial__avatar {
     margin-left: 36px;
 }
 
@@ -458,4 +488,37 @@ p {
 
 #contact p {
     font-size: var(--font-small);
+}
+
+@media screen and (max-width: 768px) {
+    /* Navbar */
+    .navbar__menu {
+        display: none;
+    }
+    .navbar__menu-hamburger {
+        display: block;
+    }
+    /* About */
+    .about__majors {
+        flex-direction: column;
+        margin-top: 50px;
+        margin-bottom: 98px;
+    }
+    .major {
+        margin: 10px 0;
+    }
+    /* Skills */
+    .skillset {
+        flex-direction: column;
+        margin-top: 68px;
+    }
+    /* Work */
+    #work {
+        padding-bottom: 98px;
+    }
+    /* Testimonial */
+    .testimonial__avatar {
+        width: 80px;
+        height: 80px;
+    }
 }
