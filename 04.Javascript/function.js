@@ -180,6 +180,8 @@ function calculate(command, a, b) {
         case 'remainder':
             result = a % b;
             break;
+        default:
+            throw Error('unknown command')
     }
     return result;
 }
