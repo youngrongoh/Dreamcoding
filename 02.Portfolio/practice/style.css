@@ -430,3 +430,32 @@ p {
 .testimonial__speech-bubble a span {
     color: var(--color-dark-pink);
 }
+
+/* Contact */
+#contact {
+    background-color: var(--color-pink);
+}
+
+#contact h1,
+#contact p,
+.contact__mail{
+    color: var(--color-white);
+}
+
+.contact__item {
+    display: inline-block;
+    font-size: var(--font-large);
+    color: var(--color-light-white);
+    margin: 20px 0;
+    
+}
+
+.contact__item:hover i{
+    color: var(--color-white);
+    transform: scale(1.2);
+    transition: 200ms ease-in;
+}
+
+#contact p {
+    font-size: var(--font-small);
+}
