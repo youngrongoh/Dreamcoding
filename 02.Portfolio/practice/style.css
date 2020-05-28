@@ -426,7 +426,7 @@ p {
 .testimonial.left .testimonial__speech-bubble:after {
     content: ' ';
     position: absolute;
-    top: 30px;
+    top: 65px;
     left: -20px;
     border-width: 10px;
     border-style: solid;
@@ -436,7 +436,7 @@ p {
 .testimonial.right .testimonial__speech-bubble:after {
     content: ' ';
     position: absolute;
-    top: 30px;
+    top: 65px;
     right: -20px;
     border-width: 10px;
     border-style: solid;
@@ -517,8 +517,15 @@ p {
         padding-bottom: 98px;
     }
     /* Testimonial */
+    .testimonial.left .testimonial__speech-bubble:after {
+        top: 30px;
+    }
+    .testimonial.right .testimonial__speech-bubble:after {
+        top: 30px;
+    }
     .testimonial__avatar {
         width: 80px;
         height: 80px;
     }
+    
 }
