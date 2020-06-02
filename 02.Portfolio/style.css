@@ -471,6 +471,33 @@ p {
     color: var(--color-yellow);
 }
 
+/* Arrow up */
+.arrow-up {
+    position: fixed;
+    right: 30px;
+    bottom: 20px;
+    background-color: var(--color-white);
+    width: 42px;
+    height: 42px;
+    line-height: 48px;
+    border-radius: 50%;
+    font-size: var(--font-large);
+    color: var(--color-pink);
+    opacity: 0;
+    padding: 0;
+    transition: all var(--animation-duration) ease-in;
+    pointer-events: none;
+}
+
+.arrow-up i {
+    margin: -3px 0 0 -1px;
+}
+
+.arrow-up.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 /* For below 768px screen width */
 @media screen and (max-width: 768px) {
     .navbar__toggle-btn {
