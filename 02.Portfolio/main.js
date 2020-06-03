@@ -60,31 +60,6 @@ arrowUp.addEventListener('click', () => {
 });
 
 // Projects
-// const categories = document.querySelector('.work__categories');
-// categories.addEventListener('click', (event) => {
-//     const target = event.target;
-//     const category = target.dataset.categoryNum;
-//     const projects = document.querySelectorAll('.project');
-//     for (let i = 0; i < categories.children.length; i++) {
-//         categories.children[i].classList.remove('active')
-//     }
-//     target.classList.add('active');
-//     if (!category) {
-//         return;
-//     } else if (category == 0) {
-//         for (let project of projects) {
-//             project.classList.add('visible');
-//         }
-//         return;
-//     }
-//     for (let project of projects) {
-//         if (category == project.dataset.categoryNum) {
-//             project.classList.add('visible');
-//         } else {
-//             project.classList.remove('visible');
-//         }
-//     };
-// });
 const workBtnContainer = document.querySelector('.work__categories');
 const projectContainer = document.querySelector('.work__projects');
 const projects = document.querySelectorAll('.project');
@@ -93,6 +68,14 @@ workBtnContainer.addEventListener('click', (e) => {
     if (filter == null) {
         return;
     }
+
+    // Remove selection from the previous item and select the new one
+    const selected = document.querySelector('.category__btn.selected');
+    if (selected != null) {
+        selected.classList.remove('selected');
+    }
+    e.target.classList.add('selected');
+
     projectContainer.classList.add('anim-out');
     setTimeout(() => {
         projects.forEach((project) => {
