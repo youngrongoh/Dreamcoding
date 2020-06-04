@@ -137,9 +137,9 @@ p {
 
 .navbar__toggle-btn {
     position: absolute;
-    top: 24px;
-    right: 32px;
-    font-size: 24px;
+    top: 20px;
+    right: 24px;
+    font-size: 28px;
     color: var(--color-white);
     display: none;
 }
@@ -212,7 +212,6 @@ p {
 
 .major__icon:hover i {
     color: var(--color-pink);
-    /* ERROR: 'transform' is not work when hover on this element */
     transform: rotate(-30deg) scale(1.1);
 }
 
@@ -396,7 +395,7 @@ p {
 }
 
 .project__description h3 {
-    color: var(--color-white);
+    color: var(--color-orange);
 }
 
 .project__description h3:after {
@@ -404,10 +403,10 @@ p {
     display: block;
     position: relative;
     left: 50%;
-    margin-left: -12px;
+    transform: translateX(-50%);
     margin-top: 8px;
-    width: 25px;
-    height: 2px;
+    width: 50px;
+    height: 1px;
     background-color: var(--color-dark-white);
 }
 
@@ -471,12 +470,14 @@ p {
 .contact__links {
     font-size: var(--font-large);
     margin: 24px 0;
-    transition: all var(--animaion-duration) ease-in;
+}
+
+.contact__links i {
+    transition: all var(--animation-duration) ease-out;
 }
 
 .contact__links i:hover {
-    /* ERROR: 'transform' is not work when hover on this element */
-    transform: scale(1.1);
+    transform: scale(1.1) rotate(-30deg);
     color: var(--color-yellow);
 }
 
@@ -516,13 +517,22 @@ p {
     #navbar {
         flex-direction: column;
         align-items:flex-start;
+        background-color: var(--color-pink);
+    }
+
+    #navbar.navbar--dark {
+        padding: 16px;
     }
     
     .navbar__menu {
-        flex-direction: column;
-        text-align-last: center;
+        /* flex-direction: column; */
+        text-align: center;
         width: 100%;
         display: none;
+    }
+
+    .navbar__menu.open {
+        display: block;
     }
     
     .about__majors {

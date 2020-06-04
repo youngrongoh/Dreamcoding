@@ -4,10 +4,10 @@
 const navbar = document.querySelector('#navbar');
 let navbarHeight = navbar.getBoundingClientRect().height;
 document.addEventListener('scroll', () => {
-    if (window.scrollY > navbarHeight) {
-        navbar.classList.add('navbar--dark')
-    } else {
+    if (window.scrollY < navbarHeight && !navbarMenu.classList[1]) {
         navbar.classList.remove('navbar--dark')
+    } else {
+        navbar.classList.add('navbar--dark')
     }
 })
 
@@ -23,7 +23,17 @@ navbarMenu.addEventListener('click', (event) => {
     // const selectLink = document.querySelector(link);
     // const scrollY = selectLink.offsetTop - navbarHeight;
     // window.scrollTo({ top: scrollY, behavior: 'smooth' });
+    navbarMenu.classList.remove('open');
     scrollIntoView(link);
+});
+
+// Navbar toggle button for small screen
+const navbarToggleBtn = document.querySelector('.navbar__toggle-btn');
+navbarToggleBtn.addEventListener('click', () => {
+    navbarMenu.classList.toggle('open');
+    // if (window.scrollY <= navbarHeight) {
+    //     navbar.classList.toggle('navbar--dark');
+    // }
 });
 
 // Handle click on "contact me" button on home
@@ -87,12 +97,7 @@ workBtnContainer.addEventListener('click', (e) => {
         });
         projectContainer.classList.remove('anim-out');
     }, 300);
-})
-
-
-
-
-
+});
 
 function scrollIntoView(selector) {
     const scrollTo = document.querySelector(selector);
