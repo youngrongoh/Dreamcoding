@@ -19,10 +19,10 @@ navbarMenu.addEventListener('click', (event) => {
     if (link == null) {
         return;
     }
-    // const navbarHeight = navbar.getBoundingClientRect().height;
-    // const selectLink = document.querySelector(link);
-    // const scrollY = selectLink.offsetTop - navbarHeight;
-    // window.scrollTo({ top: scrollY, behavior: 'smooth' });
+    const navbarHeight = navbar.getBoundingClientRect().height;
+    const selectLink = document.querySelector(link);
+    const scrollY = selectLink.offsetTop - navbarHeight;
+    window.scrollTo({ top: scrollY, behavior: 'smooth' });
     navbarMenu.classList.remove('open');
     scrollIntoView(link);
 });
