@@ -123,6 +123,10 @@ header .icons .fa-search{
     margin-right: var(--padding);
 }
 
+#info .titleAndButton .title.clamp {
+    -webkit-line-clamp: 5;
+}
+
 #info .titleAndButton .moreBtn {
     background-color: var(--color-grey-light);
     height: 100%;
