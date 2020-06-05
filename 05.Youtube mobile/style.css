@@ -91,7 +91,7 @@ header .icons .fa-search{
     background-color: black;
 }
 
-/* Information for Video */
+/* Metadata in Information */
 #info {
     padding: var(--padding);
     font-size: var(--font-small);
@@ -133,3 +133,29 @@ header .icons .fa-search{
     color: var(--color-grey-dark);
 }
 
+/* Actions in Information */
+#info .actions {
+    display: flex;
+    justify-content: space-around;
+    margin: var(--padding);
+}
+
+#info .action button{
+    display: flex;
+    flex-direction: column;
+    font-size: var(--font-small);
+    color: var(--color-grey-dark);
+    align-items: center;
+    width: 4em;
+    padding: 8px;
+}
+
+#info .action i {
+    margin-bottom: calc(var(--padding) / 2);
+    font-size: var(--font-medium);
+}
+
+#info .action button:hover i,
+#info .action.active button i {
+    color: var(--color-blue)
+}
