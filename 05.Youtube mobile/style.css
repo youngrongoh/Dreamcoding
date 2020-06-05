@@ -5,8 +5,8 @@
     --color-black: #232323;
     --color-blue: #045fd4;
     --color-red: #FF0000;
-    --color-grey-dark: #E0E0E0;
-    --color-grey-light: #909090;
+    --color-grey-dark: #909090;
+    --color-grey-light: #E0E0E0;
 
     /* Size */
     --padding: 12px;
@@ -35,6 +35,10 @@ button {
     outline: none;
     cursor: pointer;
     color: inherit;
+}
+
+li {
+    list-style: none;
 }
 
 /* Header */
@@ -85,5 +89,47 @@ header .icons .fa-search{
     height: 100%;
     max-height: 720px;
     background-color: black;
+}
+
+/* Information for Video */
+#info {
+    padding: var(--padding);
+    font-size: var(--font-small);
+}
+
+#info .metadata .hashtags {
+    display: flex;
+    color: var(--color-blue);
+}
+
+#info .metadata .tag {
+    margin-right: var(--padding);
+}
+
+#info .metadata .tag:before {
+    content: '#';
+}
+
+#info .titleAndButton {
+    display: flex;
+    font-size: var(--font-medium);
+}
+
+#info .titleAndButton .title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    margin-right: var(--padding);
+}
+
+#info .titleAndButton .moreBtn {
+    background-color: var(--color-grey-light);
+    height: 100%;
+    padding: 0 3px;
+}
+
+#info .views {
+    color: var(--color-grey-dark);
 }
 
