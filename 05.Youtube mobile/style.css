@@ -251,3 +251,28 @@ header .icons .fa-search{
     margin-left: var(--padding);
 }
 
+.infoAndUpNext {
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+    #player video {
+        max-height: 565px;
+    }
+    
+    .infoAndUpNext {
+        flex-direction: row;
+        margin: var(--padding) 0;
+        max-width: 2278px;
+    }
+
+    .infoAndUpNext #info,
+    .infoAndUpNext #upNext {
+        flex-basis: 50%;
+    }
+    #info .metadata .titleAndButton {
+        display: flex;
+        justify-content: space-between;
+    } 
+}
