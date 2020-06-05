@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta data -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Youtube clone site">
+    <meta name="author" content="youngrong.oh">
+    <meta name="project number" content="50-00003">
+    <meta name="version" content="0.1 beta">
+    <title>Youtube Mobile</title>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/4eb8bfd01f.js" crossorigin="anonymous"></script>
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i class="fab fa-youtube"></i>
+            <span>Youtube</span>
+        </div>
+        <div class="icons">
+            <button class="icon"><i class="fas fa-search"></i></button>
+            <button class="icon"><i class="fas fa-ellipsis-v"></i></button>
+        </div>
+    </header>
+
+    <!-- Video Player -->
+    <section id="player">
+        <video controls src="video/video.mp4"></video>
+        <!-- video controls -->
+        <!-- 
+        <div class="player__control">
+            <div class="coltrol__actions">
+                <div class="actions__left">
+                    <button class="actions__play"><i class="fas fa-play"></i></button>
+                    <div class="actions__playtime">
+                        <span class="playtime__now">00:02</span>
+                        <span> / </span>
+                        <span class="playtime__entire">00:08</span>
+                    </div>
+                </div>
+                <div class="actions__right">
+                    <button class="actions__volumeControl">
+                        <i class="fas fa-volume-off"></i>
+                    </button>
+                    <button class="actions__fullscreen"><i class="fas fa-expand"></i></button>
+                    <button class="actions__menu"><i class="fas fa-ellipsis-v"></i></button>
+                </div>
+            </div>
+            <div class="control__timeline">
+                <div class="timeline__value"></div>
+            </div>
+        </div>
+        -->
+    </section>
+    <!-- Information for video -->
+    <section id="info">
+        <!-- Metadata -->
+        <div class="metadata">
+            <ul class="hashtags">
+                <span class="tag">youtube</span>
+                <span class="tag">clone</span>
+                <span class="tag">coding</span>
+            </ul>
+            <div class="titleAndButton">
+                <span class="title">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias, odio.
+                </span>
+                <button class="moreBtn">
+                    <i class="fas fa-caret-down"></i>
+                </button>
+            </div>
+            <div class="views">
+                <span class="views">1M views 1 month ago</span>
+            </div>
+        </div>
+        <!-- Actions -->
+        <ul class="actions">
+            <li class="action">
+                <button>
+                    <i class="fas fa-thumbs-up"></i>
+                    <span>1k</span>
+                </button>
+            </li>
+            <li class="action">
+                <button>
+                    <i class="fas fa-thumbs-down"></i>
+                    <span>0</span>
+                </button>
+            </li>
+            <li class="action">
+                <button>
+                    <i class="fas fa-share"></i>
+                    <span>share</span>
+                </button>
+            </li>
+            <li class="action">
+                <button>
+                    <i class="fas fa-plus"></i>
+                    <span>save</span>
+                </button>
+            </li>
+            <li class="action">
+                <button>
+                    <i class="fab fa-font-awesome-flag"></i>
+                    <span>report</span>
+                </button>
+            </li>
+        </ul>
+        <!-- Chanel Description -->
+        <div class="chanel">
+            <div class="metadata">
+                <img src="image/avatar.png" alt="" />
+                <div class="info">
+                    <span class="name">Coding Masters</span>
+                    <span class="subscribers">1M Subscribers</span>
+                </div>
+            </div>
+            <button class="chanel__subscribe">subscribe</button>
+        </div>
+    </section>
+    <!-- Up next -->
+    <section id="upNext">
+        <span>Up next</span>
+        <ul class="upNext">
+            <li class="item">
+                <img src="image/1.png" alt="" />
+                <div class="info">
+                    <span class="title">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure, aut!</span>
+                    <span class="name">Coding Masters</span>
+                    <span class="views">1.2M views</span>
+                </div>
+                <button class="moreBtn"><i class="fas fa-ellipsis-v"></i></button>
+            </li>
+            <li class="item">
+                <img src="image/2.png" alt="" />
+                <div class="info">
+                    <span class="title">Qui, impedit? Necessitatibus, blanditiis impedit minima molestias cupiditate
+                        sint nobis ea dolorum id.</span>
+                    <span class="name">Coding Masters</span>
+                    <span class="views">86K views</span>
+                </div>
+                <button class="moreBtn"><i class="fas fa-ellipsis-v"></i></button>
+            </li>
+            <li class="item">
+                <img src="image/3.png" alt="" />
+                <div class="info">
+                    <span class="title">Ab quisquam aliquam veniam, possimus vero incidunt eveniet sequi!</span>
+                    <span class="name">Coding Masters</span>
+                    <span class="views">94K views</span>
+                </div>
+                <button class="moreBtn"><i class="fas fa-ellipsis-v"></i></button>
+            </li>
+        </ul>
+    </section>
+</body>
+
+</html>
