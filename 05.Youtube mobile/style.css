@@ -159,3 +159,45 @@ header .icons .fa-search{
 #info .action.active button i {
     color: var(--color-blue)
 }
+
+/* Chanel Description in Information */
+#info .chanel {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--color-grey-light);
+    border-bottom: 1px solid var(--color-grey-light);
+    padding: 20px 0;
+}
+
+#info .chanel .metadata {
+    display: flex;
+}
+
+#info .chanel .metadata img {
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+#info .chanel .metadata .info {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--font-medium);
+}
+
+#info .chanel .metadata .info .subscribers {
+    font-size: var(--font-small);
+    color: var(--color-grey-dark);
+}
+
+#info .chanel .subscribeBtn {
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--color-red);
+    transition: all 100ms ease-out;
+}
+
+#info .chanel .subscribeBtn:hover {
+    transform: scale(0.95);
+}
