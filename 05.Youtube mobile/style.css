@@ -201,3 +201,53 @@ header .icons .fa-search{
 #info .chanel .subscribeBtn:hover {
     transform: scale(0.95);
 }
+
+/* Up next */
+#upNext {
+    padding: 0 var(--padding);
+    font-size: var(--font-medium);
+
+}
+
+#upNext > .title {
+    color: var(--color-grey-dark);
+    margin-bottom: calc(var(--padding) / 2);
+}
+
+#upNext .upNext .item {
+    display: flex;
+    margin-top: var(--padding);
+}
+
+#upNext .upNext .item .img {
+    flex: 1 1 35%;
+    margin-right: var(--padding);
+}
+
+#upNext .upNext .item .img img{
+    width: 100%;
+}
+
+#upNext .upNext .item .info {
+    flex: 1 1 60%;
+    display: flex;
+    flex-direction: column;
+    font-size: var(--font-micro);
+    color: var(--color-grey-dark);
+}
+
+#upNext .upNext .item .info .title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+    font-size: var(--font-medium);
+    color: black;
+}
+
+#upNext .upNext .item .moreBtn {
+    flex: 1 1 5%;
+    height: 100%;
+    margin-left: var(--padding);
+}
+
