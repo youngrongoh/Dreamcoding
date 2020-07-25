@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>size</title>
+    <style>
+        .tag {
+            background-color: lightskyblue;
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Self code -->
+    <!-- 
+    <section>
+        <div class="winScreen">window.screen: <span></span></div>
+        <div class="winOuter">window.outer: <span></span></div>
+        <div class="winInner">window.inner: <span></span></div>
+        <div class="clientWidth">documentElement.clientWidth: <span></span></div>
+    </section>
+    <script>
+        const screenSize = document.querySelector('.winScreen');
+        const outerSize = document.querySelector('.winOuter');
+        const innerSize = document.querySelector('.winInner');
+        const clientSize = document.querySelector('.clientWidth');
+
+        window.addEventListener('resize', () => {
+            screenSize.lastChild.innerText = `${window.screen.width}, ${window.screen.height}`;
+            outerSize.lastChild.innerText = `${window.outerWidth}, ${window.outerHeight}`;
+            innerSize.lastChild.innerText = `${window.innerWidth}, ${window.innerHeight}`;
+            clientSize.lastChild.innerText = `${document.documentElement.clientWidth}, ${document.documentElement.clientHeight}`;
+        });
+    </script>
+-->
+
+    <!-- Ellie's code -->
+    <div class="tag">Window Size</div>
+    <script>
+        const tag = document.querySelector('.tag');
+        function updateTag() {
+            tag.innerHTML = `
+            window.screen: ${window.screen.width}, ${window.screen.height} <br/>
+            window.outer: ${window.outerWidth}, ${window.outerHeight}<br/>
+            window.inner: ${window.innerWidth}, ${window.innerHeight}<br/>
+            documentElement.clientWidth: ${document.documentElement.clientWidth}, ${document.documentElement.clientHeight}<br/>
+            `;
+        }
+        window.addEventListener('resize', () => updateTag());
+        updateTag();
+    </script>
+</body>
+
+</html>
