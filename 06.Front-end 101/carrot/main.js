@@ -9,6 +9,13 @@ bug.setAttribute('class', 'bug');
 bug.setAttribute('src', './img/bug.png');
 
 // 랜덤한 좌표값 계산 - Math.random() max-min 필드 범위 안에서
+function getRandomCoordinate() {
+    const field = document.querySelector('.game__field');
+    const fieldRect = field.getBoundingClientRect();
+    const x = Math.random() * fieldRect.width + fieldRect.x;
+    const y = Math.random() * fieldRect.height + fieldRect.y;
+    return { x: x, y: y }
+}
 
 // 아이템 좌표 - position:relative top 0, left 0 기준 위치 설정, style.transform을 이용해 좌표 부여
 
