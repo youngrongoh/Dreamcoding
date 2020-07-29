@@ -20,48 +20,59 @@ let started = false;
 let score = 0;
 let timer = undefined;
 
+field.addEventListener('click', onFieldClick);
+
 gameBtn.addEventListener('click', _ => {
     if (started) {
         stopGame();
     } else {
         startGame();
     }
-    started = !started;
 })
 
-field.addEventListener('click', e => {
-    if (e.target.className == 'carrot') {
-        e.target.remove();
-        gameScore.innerText--;
-    } else if (e.target.className == 'bug') {
-        finishGame();
-    }
+popUpRefresh.addEventListener('click', () => {
+    startGame();
+    hidePopUp();
 });
 
 function startGame() {
+    started = true;
     initGame();
     showStopButton();
     showTimerAndScore();
     startGameTimer();
-    gameBtn.style.visibility = 'visibility';
 }
 
 function stopGame() {
+    started = false;
     stopGameTimer();
     hideGameButton();
-    showPopUpWithText('REPLAY ❓');
+    finishGame('stop');
 }
 
-function finishGame() {
-    showPopUp('lose');
-    popUp.classList.remove('pop-up--hide');
-
+function finishGame(win) {
+    started = false;
+    hideGameButton();
+    stopGameTimer();
+    switch (win) {
+        case 'win':
+            showPopUpWithText('YOU WON 🎉');
+            break;
+        case 'lose':
+            showPopUpWithText('YOU LOSE 💩');
+            break;
+        case 'stop':
+            showPopUpWithText('REPLAY ❓');
+            break;
+    }
 }
 
 function showStopButton() {
     const icon = gameBtn.querySelector('.fas');
     icon.classList.add('fa-stop');
     icon.classList.remove('fa-play');
+    gameBtn.style.visibility = 'visible';
+
 }
 
 function hideGameButton() {
@@ -78,12 +89,16 @@ function showPopUpWithText(text) {
     popUp.classList.remove('pop-up--hide');
 }
 
+function hidePopUp() {
+    popUp.classList.add('pop-up--hide');
+}
+
 function startGameTimer() {
     let remainingTimeSec = GAME_DURATION_SEC;
     updateTimerText(remainingTimeSec);
     timer = setInterval(() => {
         if (remainingTimeSec <= 0) {
-            clearInterval(timer);
+            finishGame('lose');
             return;
         }
         updateTimerText(--remainingTimeSec);
@@ -105,6 +120,28 @@ function initGame() {
     gameScore.innerText = CARROT_COUNT;
     addItem('carrot', CARROT_COUNT, 'img/carrot.png', CARROT_SIZE);
     addItem('bug', BUG_COUNT, 'img/bug.png', BUG_SIZE);
+}
+
+function onFieldClick(event) {
+    if (!started) {
+        return;
+    }
+    const target = event.target;
+    if (target.matches('.carrot')) {
+        target.remove();
+        score++;
+        updateScoreBoard();
+        if (score === CARROT_COUNT) {
+            finishGame('win');
+        }
+    } else if (target.matches('.bug')) {
+        stopGameTimer();
+        finishGame('lose');
+    }
+}
+
+function updateScoreBoard() {
+    gameScore.innerText = CARROT_COUNT - score;
 }
 
 function addItem(className, count, imgPath, padding) {
