@@ -70,13 +70,6 @@ body {
     position: relative;
 }
 
-.game__field .carrot,
-.game__field .bug {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
 .pop-up {
     display: block;
     width: 400px;
