@@ -12,6 +12,7 @@ const gameBtn = document.querySelector('.game__button');
 const gameTimer = document.querySelector('.game__timer');
 const gameScore = document.querySelector('.game__score');
 const popUp = document.querySelector('.pop-up');
+const popUpMessage = document.querySelector('.pop-up__message')
 
 let started = false;
 let score = 0;
@@ -40,13 +41,19 @@ function startGame() {
     showStopButton();
     showTimerAndScore();
     startGameTimer();
-    popUp.classList.add('pop-up--hide');
     gameBtn.style.visibility = 'visibility';
 }
 
 function stopGame() {
+    showPopUp('stop');
     popUp.classList.remove('pop-up--hide');
     gameBtn.style.visibility = 'hidden';
+}
+
+function finishGame() {
+    showPopUp('lose');
+    popUp.classList.remove('pop-up--hide');
+
 }
 
 function showStopButton() {
@@ -60,11 +67,31 @@ function showTimerAndScore() {
     gameScore.style.visibility = 'visible';
 }
 
+function showPopUp(win) {
+    popUp.classList.add('pop-up--hide');
+    switch (win) {
+        case 'win':
+            popUpMessage.innerText = 'YOU WON 🎉'
+            break;
+        case 'lose':
+            popUpMessage.innerText = 'YOU LOST 💩'
+            break;
+        case 'stop':
+            popUpMessage.innerText = 'REPLAY ❓'
+            break;
+    }
+
+}
+
 function startGameTimer() {
     let remainingTimeSec = GAME_DURATION_SEC;
     updateTimerText(remainingTimeSec);
     timer = setInterval(() => {
-        if (remainingTimeSec <= 0 || !started) {
+        if (remainingTimeSec <= 0) {
+            clearInterval(timer);
+            finishGame();
+            return;
+        } else if (!started) {
             clearInterval(timer);
             stopGame();
             return;
@@ -108,12 +135,5 @@ function randomNumber(min, max) {
     return Math.random() * (max - min) + min;
 }
 
-
-
-
-
-function showPopUp() {
-
-}
 
 
