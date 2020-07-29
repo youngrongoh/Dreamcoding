@@ -11,8 +11,10 @@ const fieldRect = field.getBoundingClientRect();
 const gameBtn = document.querySelector('.game__button');
 const gameTimer = document.querySelector('.game__timer');
 const gameScore = document.querySelector('.game__score');
+
 const popUp = document.querySelector('.pop-up');
-const popUpMessage = document.querySelector('.pop-up__message')
+const popUpText = document.querySelector('.pop-up__message')
+const popUpRefresh = document.querySelector('.pop-up__refresh')
 
 let started = false;
 let score = 0;
@@ -45,9 +47,9 @@ function startGame() {
 }
 
 function stopGame() {
-    showPopUp('stop');
-    popUp.classList.remove('pop-up--hide');
-    gameBtn.style.visibility = 'hidden';
+    stopGameTimer();
+    hideGameButton();
+    showPopUpWithText('REPLAY ❓');
 }
 
 function finishGame() {
@@ -62,25 +64,18 @@ function showStopButton() {
     icon.classList.remove('fa-play');
 }
 
+function hideGameButton() {
+    gameBtn.style.visibility = 'hidden';
+}
+
 function showTimerAndScore() {
     gameTimer.style.visibility = 'visible';
     gameScore.style.visibility = 'visible';
 }
 
-function showPopUp(win) {
-    popUp.classList.add('pop-up--hide');
-    switch (win) {
-        case 'win':
-            popUpMessage.innerText = 'YOU WON 🎉'
-            break;
-        case 'lose':
-            popUpMessage.innerText = 'YOU LOST 💩'
-            break;
-        case 'stop':
-            popUpMessage.innerText = 'REPLAY ❓'
-            break;
-    }
-
+function showPopUpWithText(text) {
+    popUpText.innerText = text;
+    popUp.classList.remove('pop-up--hide');
 }
 
 function startGameTimer() {
@@ -89,15 +84,14 @@ function startGameTimer() {
     timer = setInterval(() => {
         if (remainingTimeSec <= 0) {
             clearInterval(timer);
-            finishGame();
-            return;
-        } else if (!started) {
-            clearInterval(timer);
-            stopGame();
             return;
         }
         updateTimerText(--remainingTimeSec);
     }, 1000)
+}
+
+function stopGameTimer() {
+    clearInterval(timer);
 }
 
 function updateTimerText(time) {
