@@ -42,8 +42,7 @@ popUpRefresh.addEventListener('click', () => {
 });
 
 function startGame() {
-    backgroundSound.currentTime = 0;
-    backgroundSound.play();
+    playSound(backgroundSound);
     started = true;
     initGame();
     showStopButton();
@@ -52,7 +51,6 @@ function startGame() {
 }
 
 function stopGame() {
-    alertSound.play();
     started = false;
     stopGameTimer();
     hideGameButton();
@@ -60,19 +58,21 @@ function stopGame() {
 }
 
 function finishGame(win) {
-    backgroundSound.pause();
+    stopSound(backgroundSound);
     started = false;
     hideGameButton();
     stopGameTimer();
     switch (win) {
         case 'win':
-            winSound.play();
+            playSound(winSound);
             showPopUpWithText('YOU WON 🎉');
             break;
         case 'lose':
+            playSound(alertSound);
             showPopUpWithText('YOU LOSE 💩');
             break;
         case 'stop':
+            playSound(alertSound);
             showPopUpWithText('REPLAY ❓');
             break;
     }
@@ -143,15 +143,24 @@ function onFieldClick(event) {
         target.remove();
         score++;
         updateScoreBoard();
-        carrotSound.play();
+        playSound(carrotSound);
         if (score === CARROT_COUNT) {
             finishGame('win');
         }
     } else if (target.matches('.bug')) {
         stopGameTimer();
         finishGame('lose');
-        bugSound.play();
+        playSound(bugSound);
     }
+}
+
+function playSound(sound) {
+    sound.currentTime = 0;
+    sound.play();
+}
+
+function stopSound(sound) {
+    sound.pause();
 }
 
 function updateScoreBoard() {
