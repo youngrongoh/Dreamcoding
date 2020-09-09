@@ -131,6 +131,14 @@ p {
     background-color: var(--color-dark-pink);
 }
 
+.navbar__toggleBtn {
+    position: absolute;
+    top: 20px;
+    right: 32px;
+    font-size: 24px;
+    display: none;
+}
+
 /* Home */
 #home {
     background: url(imgs/home-background.png) center/cover no-repeat;
@@ -321,6 +329,7 @@ p {
 }
 
 .categoryBtn {
+    position: relative;
     border: 1px solid var(--color-dark-white);
     border-radius: var(--size-border-radius);
     font-size: var(--font-regular);
@@ -342,16 +351,17 @@ p {
     height: 24px;
     line-height: 24px;
     display: inline-block;
-    position: relative;
+    position: absolute;
     top: -20px;
-    left: 4px;
+    right: 10%;
     opacity: 0;
     transition: all var(--animation-duration) ease-in;
 }
 
 .categoryBtn--active .categoryBtn__count,
 .categoryBtn:hover .categoryBtn__count {
-    top: 0;
+    box-shadow: 2px 2px 4px #55555570;
+    top: 5px;
     opacity: 1;
 }
 
@@ -484,4 +494,77 @@ p {
 .contact__icon--RP {
     width: var(--font-large);
     margin: -7px;
+}
+
+/* For below 768px screen width */
+@media screen and (max-width: 768px) {
+    /* Navbar */
+    #navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar__menu {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        display: none;
+    }
+
+    .menu__item {
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar__toggleBtn {
+        display: block;
+    }
+
+    /* About */
+    .about__majors {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .major {
+        margin-bottom: 38px;
+    }
+
+    /* Skills */
+    .skillset {
+        flex-direction: column;
+    }
+
+    .skillset__title {
+        font-size: var(--font-medium);
+        margin: 24px 0;
+    }
+
+    .skill {
+        margin-bottom: 24px;
+    }
+
+    .tools__item,
+    .etc__item {
+        margin-bottom: 8px;
+    }
+
+    /* Work */
+    .work__categories {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .categoryBtn__count {
+        right: 5%;
+    }
+
+    .project {
+        flex-grow: 1;
+    }
+
+    .testimonial__avatar {
+        width: 80px;
+        height: 80px;
+    }
 }
