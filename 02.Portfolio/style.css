@@ -23,8 +23,9 @@
 
     /* Font weight */
     --weight-bold: 700;
-    --weight-semi-bold: 600;
+    --weight-semi-bold: 500;
     --weight-regular: 400;
+    --weight-thin: 300;
 
     /* Size */
     --size-border-radius: 4px;
@@ -42,6 +43,10 @@ body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
     cursor: default;
+}
+
+:lang(ko) {
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 a {
@@ -85,7 +90,7 @@ h3 {
 }
 
 p {
-    font-size: var(--font-regular);
+    font-size: var(--font-small);
     font-weight: var(--weight-regular);
     margin: 4px 0;
     color: inherit;
@@ -237,6 +242,15 @@ p {
     flex-basis: 60%;
     background-color: var(--color-dark-grey);
     padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.skillset__skills {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-basis: 100%;
 }
 
 .skill{
