@@ -503,6 +503,27 @@ p {
     margin: -7px;
 }
 
+/* ArrowBtn */
+.arrowBtn {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    width: 50px;
+    height: 50px;
+    font-size: 40px;
+    color: var(--color-white);
+    background-color: var(--color-pink);
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    transition: all var(--animation-duration) ease-in;
+}
+
+.arrowBtn--visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 /* For below 768px screen width */
 @media screen and (max-width: 768px) {
     /* Navbar */

@@ -3,7 +3,12 @@
 const navbar = document.querySelector('#navbar');
 const navbarMenu = navbar.querySelector('.navbar__menu');
 const navbarHeight = navbar.getBoundingClientRect().height;
+const home = document.querySelector('#home');
+const contents = home.querySelector('.home__contents');
+const homeHeight = home.getBoundingClientRect().height;
 const contactBtn = document.querySelector('.home__contactBtn');
+const arrowBtn = document.querySelector('.arrowBtn');
+
 
 // Change bg color of navbar to pink
 function changeNavColor(scroll) {
@@ -50,22 +55,34 @@ function scrollIntoView(selector) {
 }
 
 
-// Change opacity of home contents gradually as scrolling
-function changeHomeOpacity(scroll) {
-    const home = document.querySelector('#home');
-    const contents = home.querySelector('.home__contents');
-    const homeHeight = home.getBoundingClientRect().height;
+// Adjust opacity of home contents gradually as scrolling
+function adjustHomeOpacity(scroll) {
     if (scroll <= homeHeight) {
         const opacityVal = scroll / (homeHeight * 0.6);
         contents.style.opacity = 1 - opacityVal;
     }
 }
 
-window.addEventListener('scroll', () => {
+// Show arrowBtn when scrolling down
+function showArrowBtn(scroll) {
+    if (scroll > homeHeight / 2) {
+        arrowBtn.classList.add('arrowBtn--visible');
+    } else {
+        arrowBtn.classList.remove('arrowBtn--visible');
+    }
+}
+
+// Handle click on the arrowBtn
+arrowBtn.addEventListener('click', () => {
+    scrollIntoView('#home');
+});
+
+document.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
     changeNavColor(scrollY);
     focusNavMenu(scrollY);
-    changeHomeOpacity(scrollY);
+    adjustHomeOpacity(scrollY);
+    showArrowBtn(scrollY);
 });
 
 // Handle scrolling when tapping on the navbar menu
