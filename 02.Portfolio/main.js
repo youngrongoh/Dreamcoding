@@ -3,12 +3,17 @@
 const navbar = document.querySelector('#navbar');
 const navbarMenu = navbar.querySelector('.navbar__menu');
 const navbarHeight = navbar.getBoundingClientRect().height;
+
 const home = document.querySelector('#home');
 const contents = home.querySelector('.home__contents');
 const homeHeight = home.getBoundingClientRect().height;
 const contactBtn = document.querySelector('.home__contactBtn');
-const arrowBtn = document.querySelector('.arrowBtn');
 
+const categories = document.querySelector('.work__categories');
+const projectsContainer = document.querySelector('.work__projects')
+const projects = document.querySelectorAll('.project');
+
+const arrowBtn = document.querySelector('.arrowBtn');
 
 // Change bg color of navbar to pink
 function changeNavColor(scroll) {
@@ -72,9 +77,54 @@ function showArrowBtn(scroll) {
     }
 }
 
-// Handle click on the arrowBtn
-arrowBtn.addEventListener('click', () => {
-    scrollIntoView('#home');
+function activeCategoryBtn(next) {
+    const prev = categories.querySelector('.categoryBtn--active');
+    prev.classList.remove('categoryBtn--active');
+    next.classList.add('categoryBtn--active');
+}
+
+function filterProjects(index) {
+    projects.forEach(project => {
+        const link = Number(project.dataset.indexLink);
+        projectsContainer.classList.add('work__projects--anim-out');
+        setTimeout(() => {
+            if (link === index || index === 0) {
+                project.classList.remove('project--invisible');
+            } else {
+                project.classList.add('project--invisible');
+            }
+            projectsContainer.classList.remove('work__projects--anim-out');
+        }, 300);
+    });
+}
+
+function updateProjectCount() {
+    const btns = categories.querySelectorAll('.categoryBtn');
+    const counts = [];
+    btns.forEach(btn => {
+        const index = btn.dataset.index;
+        counts[index] = 0;
+    });
+    projects.forEach(project => {
+        const link = project.dataset.indexLink;
+        counts[link] += 1;
+        counts[0] += 1;
+    });
+    btns.forEach(btn => {
+        const index = btn.dataset.index;
+        const count = btn.querySelector('.categoryBtn__count');
+        count.innerText = counts[index];
+    });
+};
+
+categories.addEventListener('click', e => {
+    let target = e.target;
+    const index = Number(target.dataset.index || target.parentElement.dataset.index);
+    if (isNaN(index)) {
+        return;
+    }
+    activeCategoryBtn(target);
+    filterProjects(index);
 });
 
 document.addEventListener('scroll', () => {
@@ -83,6 +133,11 @@ document.addEventListener('scroll', () => {
     focusNavMenu(scrollY);
     adjustHomeOpacity(scrollY);
     showArrowBtn(scrollY);
+});
+
+// Handle click on the arrowBtn
+arrowBtn.addEventListener('click', () => {
+    scrollIntoView('#home');
 });
 
 // Handle scrolling when tapping on the navbar menu
@@ -99,3 +154,5 @@ navbarMenu.addEventListener('click', e => {
 contactBtn.addEventListener('click', () => {
     scrollIntoView('#contact');
 });
+
+window.addEventListener('load', updateProjectCount);
