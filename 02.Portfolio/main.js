@@ -49,12 +49,24 @@ function scrollIntoView(selector) {
     scrollTo.scrollIntoView({ behavior: 'smooth' });
 }
 
+
+// Change opacity of home contents gradually as scrolling
+function changeHomeOpacity(scroll) {
+    const home = document.querySelector('#home');
+    const contents = home.querySelector('.home__contents');
+    const homeHeight = home.getBoundingClientRect().height;
+    if (scroll <= homeHeight) {
+        const opacityVal = scroll / (homeHeight * 0.6);
+        contents.style.opacity = 1 - opacityVal;
+    }
+}
+
 window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
     changeNavColor(scrollY);
     focusNavMenu(scrollY);
+    changeHomeOpacity(scrollY);
 });
-
 
 // Handle scrolling when tapping on the navbar menu
 navbarMenu.addEventListener('click', e => {
