@@ -4,18 +4,21 @@ const navbar = document.querySelector('#navbar');
 const navbarMenu = navbar.querySelector('.navbar__menu');
 const navbarHeight = navbar.getBoundingClientRect().height;
 const contactBtn = document.querySelector('.home__contactBtn');
-const sections = document.querySelectorAll('section');
-const contact = document.querySelector('#contact');
 
 // Change bg color of navbar to pink
-window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    if (scrollY >= navbarHeight) {
+function changeNavColor(scroll) {
+    const _scrollY = scroll;
+    if (_scrollY >= navbarHeight) {
         navbar.classList.add('navbar--dark');
     } else {
         navbar.classList.remove('navbar--dark');
     }
+}
 
+// Change active state on navbar menu as scrolling
+function focusNavMenu(scroll) {
+    const _scrollY = scroll;
+    const sections = document.querySelectorAll('section');
     sections.forEach((section) => {
         const bodyHeight = document.body.offsetHeight;
         const scrollMax = Math.ceil(window.innerHeight + window.pageYOffset);
@@ -23,21 +26,33 @@ window.addEventListener('scroll', () => {
         const sectionHeight = section.getBoundingClientRect().height;
         const y1 = section.offsetTop - navbarHeight;
         const y2 = y1 + sectionHeight;
-        if (bodyHeight === scrollMax) {
-            const prev = navbarMenu.querySelector('.menu__item--active');
-            prev.classList.remove('menu__item--active');
-            const next = navbarMenu.querySelector(`[data-link="#contact"]`);
-            next.classList.add('menu__item--active');
-            return;
-        }
-        if (scrollY >= y1 && scrollY < y2) {
-            const id = section.id
+        const changeActive = (id) => {
             const prev = navbarMenu.querySelector('.menu__item--active');
             prev.classList.remove('menu__item--active');
             const next = navbarMenu.querySelector(`[data-link="#${id}"]`);
             next.classList.add('menu__item--active');
         }
+        if (bodyHeight === scrollMax) {
+            const id = 'contact'
+            changeActive(id)
+            return;
+        }
+        if (_scrollY >= y1 && _scrollY < y2) {
+            const id = section.id
+            changeActive(id)
+        }
     });
+}
+
+function scrollIntoView(selector) {
+    const scrollTo = document.querySelector(selector);
+    scrollTo.scrollIntoView({ behavior: 'smooth' });
+}
+
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    changeNavColor(scrollY);
+    focusNavMenu(scrollY);
 });
 
 
@@ -48,10 +63,10 @@ navbarMenu.addEventListener('click', e => {
     if (link === null) {
         return;
     }
-    const scrollTo = document.querySelector(link);
-    scrollTo.scrollIntoView({ behavior: 'smooth' });
+    scrollIntoView(link);
 });
 
+// Handle click on "contact me" button on home
 contactBtn.addEventListener('click', () => {
-    contact.scrollIntoView({ behavior: 'smooth' });
+    scrollIntoView('#contact');
 });

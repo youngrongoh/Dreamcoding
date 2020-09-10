@@ -107,6 +107,7 @@ p {
     color: var(--color-white);
     padding: 0 36px;
     transition: background-color var(--animation-duration) ease;
+    z-index: 1;
 }
 
 #navbar.navbar--dark {
