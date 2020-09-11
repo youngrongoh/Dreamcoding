@@ -1,8 +1,8 @@
 'use strict'
 
 const navbar = document.querySelector('#navbar');
-const navbarMenu = navbar.querySelector('.navbar__menu');
 const navbarHeight = navbar.getBoundingClientRect().height;
+const navbarMenu = navbar.querySelector('.navbar__menu');
 const toggleBtn = navbar.querySelector('.navbar__toggleBtn');
 const home = document.querySelector('#home');
 const contents = home.querySelector('.home__contents');
@@ -15,13 +15,15 @@ const projects = document.querySelectorAll('.project');
 
 const arrowBtn = document.querySelector('.arrowBtn');
 
+let navClosedHeight;
+
 // Change bg color of navbar to pink
 function changeNavColor(scroll) {
     if (navbarMenu.classList.contains('navbar__menu--visible')) {
         return;
     }
     const _scrollY = scroll;
-    if (_scrollY >= navbarHeight) {
+    if (_scrollY >= navClosedHeight) {
         navbar.classList.add('navbar--dark');
     } else {
         navbar.classList.remove('navbar--dark');
@@ -35,9 +37,9 @@ function focusNavMenu(scroll) {
     sections.forEach((section) => {
         const bodyHeight = document.body.offsetHeight;
         const scrollMax = Math.ceil(window.innerHeight + window.pageYOffset);
-        const navbarHeight = navbar.getBoundingClientRect().height;
+        const navClosedHeight = navbar.getBoundingClientRect().height;
         const sectionHeight = section.getBoundingClientRect().height;
-        const y1 = section.offsetTop - navbarHeight;
+        const y1 = section.offsetTop - navClosedHeight;
         const y2 = y1 + sectionHeight;
         const changeActive = (id) => {
             const prev = navbarMenu.querySelector('.menu__item--active');
@@ -120,9 +122,24 @@ function updateProjectCount() {
     });
 };
 
+
+function initNavHeight() {
+    if (window.innerWidth <= 768) {
+        navbarMenu.style.display = 'none';
+    }
+    navbar.style.height = '';
+    navClosedHeight = Number(getComputedStyle(navbar).height.match(/.*[^px]/));
+    navbarMenu.style.display = 'flex';
+    navbar.style.height = navClosedHeight + 'px';
+}
+
 toggleBtn.addEventListener('click', () => {
     navbar.classList.add('navbar--dark');
-    navbarMenu.classList.toggle('navbar__menu--visible');
+    if (navbar.style.height === navClosedHeight + 'px') {
+        navbar.style.height = navbarHeight + 'px';
+    } else {
+        navbar.style.height = navClosedHeight + 'px';
+    }
 })
 
 categories.addEventListener('click', e => {
@@ -138,7 +155,9 @@ categories.addEventListener('click', e => {
 
 document.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
-    changeNavColor(scrollY);
+    if (navbar.style.height === navClosedHeight + 'px') {
+        changeNavColor(scrollY);
+    }
     focusNavMenu(scrollY);
     adjustHomeOpacity(scrollY);
     showArrowBtn(scrollY);
@@ -164,4 +183,11 @@ contactBtn.addEventListener('click', () => {
     scrollIntoView('#contact');
 });
 
-window.addEventListener('load', updateProjectCount);
+window.addEventListener('load', () => {
+    initNavHeight();
+    updateProjectCount();
+});
+
+window.addEventListener('resize', () => {
+    initNavHeight();
+})
