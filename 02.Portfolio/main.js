@@ -200,3 +200,7 @@ window.addEventListener('load', () => {
 window.addEventListener('resize', () => {
     initNavHeight();
 })
+
+window.addEventListener('orientationchange', () => {
+    initNavHeight();
+})
