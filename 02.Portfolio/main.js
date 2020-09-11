@@ -133,12 +133,20 @@ function initNavHeight() {
     navbar.style.height = navClosedHeight + 'px';
 }
 
+function toggleNavMenu(request) {
+    if (request === 'open') {
+        navbar.style.height = navbarHeight + 'px';
+    } else if (request === 'close') {
+        navbar.style.height = navClosedHeight + 'px';
+    }
+}
+
 toggleBtn.addEventListener('click', () => {
     navbar.classList.add('navbar--dark');
     if (navbar.style.height === navClosedHeight + 'px') {
-        navbar.style.height = navbarHeight + 'px';
+        toggleNavMenu('open');
     } else {
-        navbar.style.height = navClosedHeight + 'px';
+        toggleNavMenu('close');
     }
 })
 
@@ -176,6 +184,7 @@ navbarMenu.addEventListener('click', e => {
         return;
     }
     scrollIntoView(link);
+    toggleNavMenu('close');
 });
 
 // Handle click on "contact me" button on home
