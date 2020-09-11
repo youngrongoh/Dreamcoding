@@ -3,7 +3,7 @@
 const navbar = document.querySelector('#navbar');
 const navbarMenu = navbar.querySelector('.navbar__menu');
 const navbarHeight = navbar.getBoundingClientRect().height;
-
+const toggleBtn = navbar.querySelector('.navbar__toggleBtn');
 const home = document.querySelector('#home');
 const contents = home.querySelector('.home__contents');
 const homeHeight = home.getBoundingClientRect().height;
@@ -17,6 +17,9 @@ const arrowBtn = document.querySelector('.arrowBtn');
 
 // Change bg color of navbar to pink
 function changeNavColor(scroll) {
+    if (navbarMenu.classList.contains('navbar__menu--visible')) {
+        return;
+    }
     const _scrollY = scroll;
     if (_scrollY >= navbarHeight) {
         navbar.classList.add('navbar--dark');
@@ -117,10 +120,16 @@ function updateProjectCount() {
     });
 };
 
+toggleBtn.addEventListener('click', () => {
+    navbar.classList.add('navbar--dark');
+    navbarMenu.classList.toggle('navbar__menu--visible');
+})
+
 categories.addEventListener('click', e => {
-    let target = e.target;
-    const index = Number(target.dataset.index || target.parentElement.dataset.index);
-    if (isNaN(index)) {
+    const target =
+        e.target.nodeName === 'BUTTON' ? e.target : e.target.parentElement;
+    const index = Number(target.dataset.index);
+    if (target.classList.contains('categoryBtn--active') || isNaN(index)) {
         return;
     }
     activeCategoryBtn(target);
