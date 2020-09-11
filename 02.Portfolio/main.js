@@ -68,7 +68,7 @@ function scrollIntoView(selector) {
 // Adjust opacity of home contents gradually as scrolling
 function adjustHomeOpacity(scroll) {
     if (scroll <= homeHeight) {
-        const opacityVal = scroll / (homeHeight * 0.6);
+        const opacityVal = scroll / (homeHeight * 0.8);
         contents.style.opacity = 1 - opacityVal;
     }
 }
