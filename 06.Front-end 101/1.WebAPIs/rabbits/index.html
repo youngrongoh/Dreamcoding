@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scroll</title>
+  <style>
+    body {
+      background-color: #333;
+      text-align: center;
+    }
+
+    .find {
+      background-color: tomato;
+      color: white;
+      font-size: 32px;
+      margin: 16px 0;
+      cursor: pointer;
+    }
+
+    .carrot,
+    .rabbit {
+      display: block;
+      margin: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <button class="find">Find a rabbit🐇</button>
+
+  <script>
+    const findBtn = document.querySelector('.find');
+
+    const NUM_ITEM = 10;
+
+    findBtn.addEventListener('click', () => {
+      rabbit.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    })
+
+    window.addEventListener('load', () => {
+      const randomIndex = Math.floor(Math.random() * NUM_ITEM);
+      console.log(randomIndex)
+      for (let i = 0; i < NUM_ITEM; i++) {
+        if (i === randomIndex) {
+          const rabbit = document.createElement('img');
+          rabbit.setAttribute('id', 'rabbit');
+          rabbit.setAttribute('src', 'img/rabbit.png');
+          document.body.appendChild(rabbit);
+        } else {
+          const carrot = document.createElement('img');
+          carrot.setAttribute('class', 'carrot');
+          carrot.setAttribute('src', 'img/carrot.png');
+          document.body.appendChild(carrot);
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
