@@ -15,6 +15,7 @@ h1 {
 
 ul, li {
     padding: 0;
+    list-style: none;
 }
 
 button {
@@ -38,6 +39,7 @@ input {
     border-radius: 20px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .shopping-list__header {
@@ -54,10 +56,12 @@ input {
 }
 
 .shopping-list__main {
-    position: relative;
-    background-color: #fff;
+    background-color: #ededed;
     flex-basis: 80%;
+    overflow-y: auto;
+    box-shadow: inset 0 1px 10px #00000020;
 }
+
 .main__item {
     position: relative;
     display: flex;
@@ -81,17 +85,14 @@ input {
 }
 
 #input-text {
-    position: absolute;
-    bottom: 0;
     width: 100%;
     line-height: 36px;
     font-size: 24px;
     text-indent: 12px;
-    box-shadow: 0 -3px 10px #00000010;
 }
 
 .shopping__list__footer {
-    flex-basis: 10%;
+    flex-basis: 15%;
     text-align: center;
 }
 
@@ -103,5 +104,5 @@ input {
     border-radius: 50%;
     font-size: 30px;
     line-height: 50px;
-    margin-top: 8px;
+    margin-top: 5px;
 }
