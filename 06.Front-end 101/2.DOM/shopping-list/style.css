@@ -14,6 +14,7 @@ h1 {
 }
 
 ul, li {
+    margin: 0;
     padding: 0;
     list-style: none;
 }
@@ -30,19 +31,24 @@ input {
     border: none;
 }
 
-#shopping-list {
+#todo-list {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: rgb(190,137,226);
     background: linear-gradient(295deg, rgba(190,137,226,1) 0%, rgba(224,134,134,1) 50%, rgba(237,193,131,1) 100%);
     width: 400px;
     height: 680px;
-    margin: 80px auto;
+    margin: auto;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
 }
 
-.shopping-list__header {
+.todo-list__header {
+    position: relative;
     flex-basis: 10%;
 }
 
@@ -55,7 +61,24 @@ input {
     color: white;
 }
 
-.shopping-list__main {
+.header__deleteAll {
+    position: absolute;
+    right: 36px;
+    top: 0;
+    bottom: 0px;
+    margin: auto;
+    font-size: 18px;
+    width: 24px;
+    height: 24px;
+    color: white;
+    transition: transform .3s ease;
+}
+
+.header__deleteAll:hover {
+    transform: scale(1.2);
+}
+
+.todo-list__main {
     background-color: #ededed;
     flex-basis: 80%;
     overflow-y: auto;
@@ -66,8 +89,8 @@ input {
     position: relative;
     display: flex;
     justify-content: space-between;
-    padding: 18px 24px;
-    font-size: 18px;
+    padding: 5px 24px;
+    align-items: center;
 }
 
 .main__item:after {
@@ -80,8 +103,80 @@ input {
     background-color: #66666616;
 }
 
+.item__check {
+    display: block;
+    position: relative;
+    padding: 8px 0;
+    padding-left: 28px;
+    cursor: pointer;
+    flex-basis: 90%;
+    height: ;
+}
+
+.checkbox {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 9px;
+    height: 16px;
+    transform: rotate(45deg);
+    border: solid #ff0000dd;
+    border-width: 0 3px 3px 0;
+    opacity: 0;
+}
+
+.item__check:hover .checkbox:not(:checked) ~ .checkmark {
+    border-color: #333333;
+    opacity: 0.2;
+}
+
+.checkbox:checked ~ .checkmark {
+    opacity: 1;
+}
+
+.check__desc {
+    position: relative;
+    user-select: none;
+    font-size: 20px;
+}
+
+.check__desc:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -5px;
+    right: 100%;
+    background-color: red;
+    height: 2px;
+    opacity: 0;
+    transition: .3s linear;
+}
+
+.checkbox:checked ~ .check__desc:after{
+    opacity: 0.9;
+    right: -5px;
+}
+
+.checkbox:checked ~ .check__desc {
+    color: grey;
+}
+
 .item__delete {
     font-size: 18px;
+    width: 20px;
+    height: 20px;
+    transition: transform .3s ease;
+}
+
+.item__delete:hover {
+    transform: scale(1.2);
 }
 
 #input-text {
@@ -91,7 +186,7 @@ input {
     text-indent: 12px;
 }
 
-.shopping__list__footer {
+.todo__list__footer {
     flex-basis: 15%;
     text-align: center;
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping List</title>
+    <title>Your To-do List</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Pacifico&display=swap" rel="stylesheet">
@@ -12,22 +12,18 @@
 </head>
 
 <body>
-    <section id="shopping-list">
-        <header class="shopping-list__header">
-            <h1 class="header__title">Shopping List</h1>
+    <section id="todo-list">
+        <header class="todo-list__header">
+            <h1 class="header__title">To-do List</h1>
+            <button class="header__deleteAll">
+                <i class="fas fa-trash"></i>
+            </button>
         </header>
-        <main class="shopping-list__main">
-            <ul class="main__list">
-                <li class="main__item">
-                    <span class="item__desc">우유</span>
-                    <button class="item__delete">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </li>
-            </ul>
+        <main class="todo-list__main">
+            <ul class="main__list"></ul>
         </main>
-        <footer class="shopping__list__footer">
-            <input type="text" name="input-text" id="input-text">
+        <footer class="todo__list__footer">
+            <input type="text" id="input-text">
             <button class="footer__plus">
                 <i class="fas fa-plus"></i>
             </button>
