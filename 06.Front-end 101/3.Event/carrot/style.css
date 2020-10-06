@@ -150,3 +150,38 @@ button {
   height: 50px;
   cursor: pointer;
 }
+
+/* Pop Up */
+.game__pop-up {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 3em;
+  width: 9em;
+  height: 5em;
+  border-radius: 0.4em;
+  text-align: center;
+  font-size: 3rem;
+  padding: 1em 0;
+  background: #23090190;
+  margin: auto;
+}
+
+.pop-up__replay {
+  width: 2em;
+  height: 2em;
+  background-color: #fff1d1;
+  border-radius: 0.3em;
+  font-size: 0.8em;
+  border: 4px solid #230901;
+  transition: transform 0.3s ease-out;
+}
+
+.pop-up__replay:hover {
+  transform: scale(1.1);
+}
+
+.pop-up__message {
+  display: block;
+  color: #fff1d1;
+}
