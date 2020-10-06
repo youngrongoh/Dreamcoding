@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Patrick Hand', cursive;
+}
+
+body {
+  margin: 0;
+}
+
+button {
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+#game {
+  background: url(./img/background.png) center/cover no-repeat;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Title screen */
+.game__title-screen {
+  position: relative;
+  background-color: #00000090;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  visibility: hidden;
+}
+
+.game__title-screen--visible {
+  visibility: visible;
+}
+
+.title-screen__box {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.title-screen__title {
+  color: #e8c468;
+  font-size: 10rem;
+  line-height: 0.7em;
+  text-shadow: 8px 3px #2a2c41;
+  margin-top: 0;
+  margin-bottom: 0.6em;
+  user-select: none;
+}
+
+.title-screen__title span {
+  display: block;
+  color: #e76e50;
+  font-size: 0.8em;
+}
+
+.title-screen__start {
+  position: relative;
+  font-size: 3rem;
+  user-select: none;
+}
+
+.title-screen__start:after {
+  position: absolute;
+  top: 0.5em;
+  left: -0.6em;
+  content: "";
+  display: block;
+  width: 0.2em;
+  height: 0.2em;
+  border: solid #e76e50;
+  border-width: 0.2em 0.2em 0 0;
+  transform: rotate(45deg);
+  cursor: auto;
+  visibility: hidden;
+}
+
+.title-screen__start:hover:after {
+  visibility: visible;
+}
+
+
