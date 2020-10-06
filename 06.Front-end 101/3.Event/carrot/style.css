@@ -18,14 +18,18 @@ button {
   background: url(./img/background.png) center/cover no-repeat;
   width: 100vw;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Title screen */
 .game__title-screen {
-  position: relative;
-  background-color: #00000090;
-  width: 100vw;
-  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #23090190;
+  width: 100%;
+  height: 100%;
   text-align: center;
   visibility: hidden;
 }
@@ -82,4 +86,45 @@ button {
   visibility: visible;
 }
 
+/* Game header */
+.game__header {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 3rem;
+  padding: 10vh 0;
+  text-align: center;
+}
 
+.header__play {
+  width: 2em;
+  height: 2em;
+  background-color: #fff1d1;
+  border-radius: 0.3em;
+  font-size: 0.8em;
+  border: 4px solid #230901;
+  transition: transform 0.3s ease-out;
+}
+
+.header__play:hover {
+  transform: scale(1.1);
+}
+
+.header__timer {
+  width: 4em;
+  background-color: #fafffc;
+  border: 4px solid #230901;
+  border-radius: 0.3em;
+}
+
+.header__count {
+  width: 1.3em;
+  height: 1.3em;
+  line-height: 1.2em;
+  background-color: #ff928a;
+  color: #fafffc;
+  border: 3px solid #230901;
+  border-radius: 50%;
+}
