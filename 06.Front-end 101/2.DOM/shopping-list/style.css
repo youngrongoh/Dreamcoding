@@ -31,7 +31,7 @@ input {
     border: none;
 }
 
-#todo-list {
+#shopping-list {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -47,7 +47,7 @@ input {
     overflow: hidden;
 }
 
-.todo-list__header {
+.shopping-list__header {
     position: relative;
     flex-basis: 10%;
 }
@@ -71,14 +71,15 @@ input {
     width: 24px;
     height: 24px;
     color: white;
-    transition: transform .3s ease;
+    transition: all .3s ease;
 }
 
 .header__deleteAll:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
+    color: black;
 }
 
-.todo-list__main {
+.shopping-list__main {
     background-color: #ededed;
     flex-basis: 80%;
     overflow-y: auto;
@@ -110,7 +111,6 @@ input {
     padding-left: 28px;
     cursor: pointer;
     flex-basis: 90%;
-    height: ;
 }
 
 .checkbox {
@@ -172,11 +172,12 @@ input {
     font-size: 18px;
     width: 20px;
     height: 20px;
-    transition: transform .3s ease;
+    transition: all .3s ease;
 }
 
 .item__delete:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
+    color: red;
 }
 
 #input-text {
@@ -186,7 +187,7 @@ input {
     text-indent: 12px;
 }
 
-.todo__list__footer {
+.shopping__list__footer {
     flex-basis: 15%;
     text-align: center;
 }
@@ -200,4 +201,9 @@ input {
     font-size: 30px;
     line-height: 50px;
     margin-top: 5px;
+    transition: transform 300ms ease-in;
+}
+
+.footer__plus:hover {
+    transform: scale(1.1);
 }
