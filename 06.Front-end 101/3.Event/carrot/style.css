@@ -128,3 +128,25 @@ button {
   border: 3px solid #230901;
   border-radius: 50%;
 }
+
+/* Game field */
+.game__field {
+  flex-basis: 50%;
+  position: relative;
+}
+
+.carrot {
+  position: absolute;
+  background: url(img/carrot.png) center/cover no-repeat;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+}
+
+.bug {
+  position: absolute;
+  background: url(img/bug.png) center/cover no-repeat;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
