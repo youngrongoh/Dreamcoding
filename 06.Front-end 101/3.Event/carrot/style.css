@@ -20,6 +20,8 @@ button {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 /* Title screen */
@@ -31,11 +33,12 @@ button {
   width: 100%;
   height: 100%;
   text-align: center;
-  visibility: hidden;
+  visibility: visible;
+  z-index: 1;
 }
 
-.game__title-screen--visible {
-  visibility: visible;
+.game__title-screen--hide {
+  visibility: hidden;
 }
 
 .title-screen__box {
@@ -53,6 +56,7 @@ button {
   margin-top: 0;
   margin-bottom: 0.6em;
   user-select: none;
+  cursor: default;
 }
 
 .title-screen__title span {
@@ -117,6 +121,7 @@ button {
   background-color: #fafffc;
   border: 4px solid #230901;
   border-radius: 0.3em;
+  cursor: default;
 }
 
 .header__count {
@@ -127,6 +132,7 @@ button {
   color: #fafffc;
   border: 3px solid #230901;
   border-radius: 50%;
+  cursor: default;
 }
 
 /* Game field */
@@ -184,4 +190,5 @@ button {
 .pop-up__message {
   display: block;
   color: #fff1d1;
+  cursor: default;
 }
