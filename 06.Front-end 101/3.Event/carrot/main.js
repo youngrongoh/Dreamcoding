@@ -4,6 +4,7 @@ const titleScreen = document.querySelector('.game__title-screen');
 const startBtn = titleScreen.querySelector('.title-screen__start');
 const playBtn = document.querySelector('.header__play');
 const timerText = document.querySelector('.header__timer');
+const count = document.querySelector('.header__count');
 const field = document.querySelector('.game__field');
 const popUp = document.querySelector('.game__pop-up');
 
@@ -98,6 +99,7 @@ function togglePopUp(state) {
 // init game
 function initGame() {
   field.innerHTML = '';
+  count.textContent = CARROT_COUNT;
   addItemsRandomly('carrot', CARROT_COUNT, CARROT_SIZE);
   addItemsRandomly('bug', BUG_COUNT, BUG_SIZE);
 }
@@ -114,9 +116,20 @@ function stopGame() {
   togglePopUp('show');
 }
 
-// count down as clicking carrots
-// put every items on field randomly
-// display pop up when timer is done
-// display pop up when bugs are clicked
+// handle clicking item on a field
+field.addEventListener('click', e => {
+  const className = e.target.classList;
+  if (className.contains('field')) {
+    return;
+  }
+
+  if(className.contains('carrot')) {
+    count.textContent--
+    e.target.remove();
+  } else {
+
+  }
+})
+
 // play bgm when the game is started
 // change pop up message as result of game(win, lose, stop)
