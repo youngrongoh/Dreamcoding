@@ -8,12 +8,17 @@ const alertSound = new Audio('./sound/alert.wav');
 
 const titleScreen = document.querySelector('.game__title-screen');
 const startBtn = titleScreen.querySelector('.title-screen__start');
+
 const playBtn = document.querySelector('.header__play');
+const iconOfPlayBtn = playBtn.querySelector('.fas');
 const timerText = document.querySelector('.header__timer');
 const count = document.querySelector('.header__count');
+
 const field = document.querySelector('.game__field');
+
 const popUp = document.querySelector('.game__pop-up');
 const popUpMessage = popUp.querySelector('.pop-up__message');
+const replayBtn = popUp.querySelector('.pop-up__replay');
 
 const SET_TIME_AS_SECOND = 10;
 const CARROT_COUNT = 3;
@@ -25,7 +30,7 @@ let timer;
 
 
 function playSound(sound) {
-  sound.currenTime = 0;
+  sound.currentTime = 0;
   sound.play();
 }
 
@@ -39,20 +44,23 @@ startBtn.addEventListener('click', () => {
   titleScreen.classList.add('game__title-screen--hide');
 })
 
+function togglePlayBtn(state) {
+  switch(state) {
+    case 'stop' : 
+      iconOfPlayBtn.classList.replace('fa-stop', 'fa-play');
+      break;
+    case 'play' :
+      iconOfPlayBtn.classList.replace('fa-play', 'fa-stop');
+      break;
+  }
+}
+
 // toggle icon of playBtn
 playBtn.addEventListener('click', e => {
-  let target;
   playSound(alertSound);
-  if (e.target.nodeName === 'BUTTON') {
-    target = e.target.querySelector('.fas');
-  } else {
-    target = e.target;
-  }
-  if(target.classList.contains('fa-play')) {
-    target.classList.replace('fa-play', 'fa-stop');
+  if(iconOfPlayBtn.classList.contains('fa-play')) {
     startGame();
   } else {
-    target.classList.replace('fa-stop', 'fa-play');
     stopGame();
   }
 })
@@ -71,6 +79,7 @@ function setTimer() {
   timer = setInterval(()=> {
     if(time <= 0) {
       finishGame('lose');
+      playSound(bugSound);
       return;
     }
     time--;
@@ -143,6 +152,7 @@ function startGame() {
   initGame();
   setTimer();
   togglePopUp('hide');
+  togglePlayBtn('play');
   playSound(bgSound);
 }
 
@@ -150,6 +160,7 @@ function stopGame() {
   stopTimer();
   changePopUpMessage('stop');
   togglePopUp('show');
+  togglePlayBtn('stop');
   stopBGSound();
 }
 
@@ -157,6 +168,7 @@ function finishGame(result) {
   stopTimer();
   changePopUpMessage(result);
   togglePopUp('show');
+  togglePlayBtn('stop');
   stopBGSound();
 }
 
@@ -175,8 +187,13 @@ field.addEventListener('click', e => {
       playSound(winSound);
       finishGame('win');
     }
-  } else {
+  } else if (className.contains('bug')) {
     playSound(bugSound);
     finishGame('lose');
   }
+})
+
+replayBtn.addEventListener('click', () => {
+  playSound(alertSound);
+  startGame();
 })
