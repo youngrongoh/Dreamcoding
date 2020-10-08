@@ -1,5 +1,11 @@
 'use strict';
 
+const bgSound = new Audio('./sound/bg.mp3');
+const carrotSound = new Audio('./sound/carrot_pull.mp3');
+const bugSound = new Audio('./sound/bug_pull.mp3');
+const winSound = new Audio('./sound/game_win.mp3');
+const alertSound = new Audio('./sound/alert.wav');
+
 const titleScreen = document.querySelector('.game__title-screen');
 const startBtn = titleScreen.querySelector('.title-screen__start');
 const playBtn = document.querySelector('.header__play');
@@ -17,14 +23,26 @@ const BUG_SIZE = 50;
 
 let timer;
 
+
+function playSound(sound) {
+  sound.currenTime = 0;
+  sound.play();
+}
+
+function stopBGSound() {
+  bgSound.pause();
+}
+
 // hide title screen when startBtn is clicked
 startBtn.addEventListener('click', () => {
+  playSound(alertSound);
   titleScreen.classList.add('game__title-screen--hide');
 })
 
 // toggle icon of playBtn
 playBtn.addEventListener('click', e => {
   let target;
+  playSound(alertSound);
   if (e.target.nodeName === 'BUTTON') {
     target = e.target.querySelector('.fas');
   } else {
@@ -97,6 +115,7 @@ function togglePopUp(state) {
   }
 }
 
+// change pop up message as result of game(win, lose, stop)
 function changePopUpMessage(result) {
   switch (result) {
     case 'win' :
@@ -123,19 +142,22 @@ function initGame() {
 function startGame() {
   initGame();
   setTimer();
-  togglePopUp('hide')
+  togglePopUp('hide');
+  playSound(bgSound);
 }
 
 function stopGame() {
   stopTimer();
   changePopUpMessage('stop');
   togglePopUp('show');
+  stopBGSound();
 }
 
 function finishGame(result) {
   stopTimer();
   changePopUpMessage(result);
   togglePopUp('show');
+  stopBGSound();
 }
 
 // handle clicking item on a field
@@ -146,15 +168,15 @@ field.addEventListener('click', e => {
   }
 
   if(className.contains('carrot')) {
-    count.textContent--
+    playSound(carrotSound);
+    count.textContent--;
     e.target.remove();
     if (count.textContent == 0) {
+      playSound(winSound);
       finishGame('win');
     }
   } else {
+    playSound(bugSound);
     finishGame('lose');
   }
 })
-
-// play bgm when the game is started
-// change pop up message as result of game(win, lose, stop)
