@@ -271,6 +271,7 @@ button {
   .game__pop-up {
     bottom: 5em;
   }
+}
 
 @media screen and (min-height: 1020px) {
   :root {
