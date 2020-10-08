@@ -169,6 +169,18 @@ button {
 /* Pop Up */
 .game__pop-up {
   position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+  visibility: hidden;
+}
+
+.game__pop-up.visible {
+  visibility: visible;
+}
+
+.pop-up__box {
+  position: absolute;
   left: 0;
   right: 0;
   bottom: 3em;
@@ -180,11 +192,6 @@ button {
   padding: 1em 0;
   background: #23090190;
   margin: auto;
-  visibility: hidden;
-}
-
-.game__pop-up.visible {
-  visibility: visible;
 }
 
 .pop-up__replay {
@@ -251,7 +258,10 @@ button {
   }
 }
 
-@media screen and (min-width: 1300px), screen and (min-height: 1020px) {
+@media screen and (min-width: 1300px) {
+  :root {
+    font-size: 18px;
+  }
   .carrot {
     width: 120px;
     height: 120px;
@@ -263,12 +273,12 @@ button {
   }
 }
 
-@media screen and (min-height: 600px) {
+@media screen and (min-height: 600px) and (max-width: 768px) {
   :root {
     font-size: 12px;
   }
 
-  .game__pop-up {
+  .pop-up__box {
     bottom: 5em;
   }
 }
@@ -278,8 +288,17 @@ button {
     font-size: 20px;
   }
 
-  .game__pop-up {
+  .pop-up__box {
     bottom: 4em;
+  }
+  .carrot {
+    width: 120px;
+    height: 120px;
+  }
+
+  .bug {
+    width: 90px;
+    height: 90px;
   }
 }
 
