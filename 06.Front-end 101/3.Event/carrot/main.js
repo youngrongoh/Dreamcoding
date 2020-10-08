@@ -5,6 +5,7 @@ const startBtn = titleScreen.querySelector('.title-screen__start');
 const playBtn = document.querySelector('.header__play');
 const timerText = document.querySelector('.header__timer');
 const field = document.querySelector('.game__field');
+const popUp = document.querySelector('.game__pop-up');
 
 const SET_TIME_AS_SECOND = 10;
 const CARROT_COUNT = 3;
@@ -29,24 +30,31 @@ playBtn.addEventListener('click', e => {
   }
   if(target.classList.contains('fa-play')) {
     target.classList.replace('fa-play', 'fa-stop');
+    startGame();
   } else {
     target.classList.replace('fa-stop', 'fa-play');
+    stopGame();
   }
 })
 
 // set timer
 // 1) change timer text
-function changeTimerText(time) {
-  const minutes = time / 60 > 10 ? Math.floor(time / 60) : `0${Math.floor(time / 60)}`;
-  const seconds = time % 60 > 10 ? time % 60 : `0${time % 60}`;
+function updateTimerText(time) {
+  const minutes = time / 60 > 9 ? Math.floor(time / 60) : `0${Math.floor(time / 60)}`;
+  const seconds = time % 60 > 9 ? time % 60 : `0${time % 60}`;
   timerText.textContent = `${minutes}:${seconds}`
 }
 // 2) start timer
-function startTimer() {
+function setTimer() {
   let time = SET_TIME_AS_SECOND;
+  updateTimerText(time);
   timer = setInterval(()=> {
-    changeTimerText(time);
+    if(time <= 0) {
+      stopTimer();
+      return;
+    }
     time--;
+    updateTimerText(time);
   }, 1000)
 }
 // 3) stop timer
@@ -76,11 +84,34 @@ function addItemsRandomly(className, count, itemSize) {
   }
 }
 
+function togglePopUp(state) {
+  switch(state) {
+    case 'show' : 
+      popUp.classList.add('visible');
+      break;
+    case 'hide' :
+      popUp.classList.remove('visible');
+      break;
+  }
+}
+
 // init game
-function init() {
+function initGame() {
   field.innerHTML = '';
   addItemsRandomly('carrot', CARROT_COUNT, CARROT_SIZE);
   addItemsRandomly('bug', BUG_COUNT, BUG_SIZE);
+}
+
+// game state
+function startGame() {
+  initGame();
+  setTimer();
+  togglePopUp('hide')
+}
+
+function stopGame() {
+  stopTimer();
+  togglePopUp('show');
 }
 
 // count down as clicking carrots

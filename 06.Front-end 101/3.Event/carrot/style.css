@@ -171,6 +171,11 @@ button {
   padding: 1em 0;
   background: #23090190;
   margin: auto;
+  visibility: hidden;
+}
+
+.game__pop-up.visible {
+  visibility: visible;
 }
 
 .pop-up__replay {
