@@ -9,8 +9,8 @@ const alertSound = new Audio('./sound/alert.wav');
 const titleScreen = document.querySelector('.game__title-screen');
 const startBtn = titleScreen.querySelector('.title-screen__start');
 
-const playBtn = document.querySelector('.header__play');
-const iconOfPlayBtn = playBtn.querySelector('.fas');
+const header = document.querySelector('.game__header');
+const stopBtn = document.querySelector('.header__stop');
 const timerText = document.querySelector('.header__timer');
 const count = document.querySelector('.header__count');
 
@@ -28,7 +28,6 @@ const BUG_SIZE = 50;
 
 let timer;
 
-
 function playSound(sound) {
   sound.currentTime = 0;
   sound.play();
@@ -38,31 +37,33 @@ function stopBGSound() {
   bgSound.pause();
 }
 
+function showHeader() {
+  header.classList.add('visible');
+}
+
 // hide title screen when startBtn is clicked
 startBtn.addEventListener('click', () => {
   playSound(alertSound);
   titleScreen.classList.add('game__title-screen--hide');
+  showHeader();
+  startGame();
 })
 
-function togglePlayBtn(state) {
+function toggleStopBtn(state) {
   switch(state) {
-    case 'stop' : 
-      iconOfPlayBtn.classList.replace('fa-stop', 'fa-play');
+    case 'show' : 
+      stopBtn.classList.remove('hide');
       break;
-    case 'play' :
-      iconOfPlayBtn.classList.replace('fa-play', 'fa-stop');
+    case 'hide' :
+      stopBtn.classList.add('hide');
       break;
   }
 }
 
-// toggle icon of playBtn
-playBtn.addEventListener('click', e => {
+// toggle icon of stopBtn
+stopBtn.addEventListener('click', e => {
   playSound(alertSound);
-  if(iconOfPlayBtn.classList.contains('fa-play')) {
-    startGame();
-  } else {
-    stopGame();
-  }
+  stopGame();
 })
 
 // set timer
@@ -77,13 +78,13 @@ function setTimer() {
   let time = SET_TIME_AS_SECOND;
   updateTimerText(time);
   timer = setInterval(()=> {
+    time--;
+    updateTimerText(time);
     if(time <= 0) {
       finishGame('lose');
       playSound(bugSound);
       return;
     }
-    time--;
-    updateTimerText(time);
   }, 1000)
 }
 // 3) stop timer
@@ -152,7 +153,7 @@ function startGame() {
   initGame();
   setTimer();
   togglePopUp('hide');
-  togglePlayBtn('play');
+  toggleStopBtn('show');
   playSound(bgSound);
 }
 
@@ -160,7 +161,7 @@ function stopGame() {
   stopTimer();
   changePopUpMessage('stop');
   togglePopUp('show');
-  togglePlayBtn('stop');
+  toggleStopBtn('hide');
   stopBGSound();
 }
 
@@ -168,7 +169,7 @@ function finishGame(result) {
   stopTimer();
   changePopUpMessage(result);
   togglePopUp('show');
-  togglePlayBtn('stop');
+  toggleStopBtn('hide');
   stopBGSound();
 }
 

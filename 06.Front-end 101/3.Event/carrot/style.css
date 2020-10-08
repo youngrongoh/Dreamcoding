@@ -100,9 +100,14 @@ button {
   font-size: 3rem;
   padding: 10vh 0;
   text-align: center;
+  visibility: hidden;
 }
 
-.header__play {
+.game__header.visible {
+  visibility: visible;
+}
+
+.header__stop {
   width: 2em;
   height: 2em;
   background-color: #fff1d1;
@@ -112,8 +117,12 @@ button {
   transition: transform 0.3s ease-out;
 }
 
-.header__play:hover {
+.header__stop:hover {
   transform: scale(1.1);
+}
+
+.header__stop.hide {
+  visibility: hidden;
 }
 
 .header__timer {
