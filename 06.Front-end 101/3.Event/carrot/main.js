@@ -15,18 +15,21 @@ const timerText = document.querySelector('.header__timer');
 const count = document.querySelector('.header__count');
 
 const field = document.querySelector('.game__field');
+const carrotSample = field.querySelector('.carrot');
+const bugSample = field.querySelector('.bug');
 
 const popUp = document.querySelector('.game__pop-up');
 const popUpMessage = popUp.querySelector('.pop-up__message');
 const replayBtn = popUp.querySelector('.pop-up__replay');
 
 const SET_TIME_AS_SECOND = 10;
-const CARROT_COUNT = 3;
-const BUG_COUNT = 3;
-const CARROT_SIZE = 80;
-const BUG_SIZE = 50;
+const CARROT_COUNT = 10;
+const BUG_COUNT = 10;
 
 let timer;
+
+let carrotSize = carrotSample.offsetWidth;
+let bugSize = bugSample.offsetWidth;
 
 function playSound(sound) {
   sound.currentTime = 0;
@@ -100,10 +103,10 @@ function createItem(className) {
 }
 
 function setRandomCoordinates(item, size) {
-  const x = Math.floor(Math.random() * (field.offsetWidth - size));
-  const y = Math.floor(Math.random() * (field.offsetHeight- size));
-  item.style.left = x + 'px';
-  item.style.top = y + 'px';
+  const x = Math.floor(Math.random() * (field.offsetWidth - size) / field.offsetWidth * 1000) / 10;
+  const y = Math.floor(Math.random() * (field.offsetHeight- size) / field.offsetHeight * 1000) / 10;
+  item.style.left = x + '%';
+  item.style.top = y + '%';
 }
 
 function addItemsRandomly(className, count, itemSize) {
@@ -144,8 +147,8 @@ function changePopUpMessage(result) {
 function initGame() {
   field.innerHTML = '';
   count.textContent = CARROT_COUNT;
-  addItemsRandomly('carrot', CARROT_COUNT, CARROT_SIZE);
-  addItemsRandomly('bug', BUG_COUNT, BUG_SIZE);
+  addItemsRandomly('carrot', CARROT_COUNT, carrotSize);
+  addItemsRandomly('bug', BUG_COUNT, bugSize);
 }
 
 // game state
@@ -197,4 +200,11 @@ field.addEventListener('click', e => {
 replayBtn.addEventListener('click', () => {
   playSound(alertSound);
   startGame();
+})
+
+window.addEventListener('resize', () => {
+  const carrot = field.querySelector('.carrot');
+  const bug = field.querySelector('.bug');
+  carrotSize = carrot.offsetWidth;
+  bugSize = bug.offsetWidth;
 })
