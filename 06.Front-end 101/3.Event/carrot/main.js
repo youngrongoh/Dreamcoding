@@ -7,6 +7,7 @@ const timerText = document.querySelector('.header__timer');
 const count = document.querySelector('.header__count');
 const field = document.querySelector('.game__field');
 const popUp = document.querySelector('.game__pop-up');
+const popUpMessage = popUp.querySelector('.pop-up__message');
 
 const SET_TIME_AS_SECOND = 10;
 const CARROT_COUNT = 3;
@@ -51,7 +52,7 @@ function setTimer() {
   updateTimerText(time);
   timer = setInterval(()=> {
     if(time <= 0) {
-      stopTimer();
+      finishGame('lose');
       return;
     }
     time--;
@@ -96,6 +97,20 @@ function togglePopUp(state) {
   }
 }
 
+function changePopUpMessage(result) {
+  switch (result) {
+    case 'win' :
+      popUpMessage.textContent = 'YOU WON! 🏆';
+      break;
+    case 'lose' :
+      popUpMessage.textContent = 'YOU LOST 💩';
+      break;
+    case 'stop' :
+      popUpMessage.textContent = 'TRY AGAIN! 🙌';
+      break;
+  }
+}
+
 // init game
 function initGame() {
   field.innerHTML = '';
@@ -113,6 +128,13 @@ function startGame() {
 
 function stopGame() {
   stopTimer();
+  changePopUpMessage('stop');
+  togglePopUp('show');
+}
+
+function finishGame(result) {
+  stopTimer();
+  changePopUpMessage(result);
   togglePopUp('show');
 }
 
@@ -126,8 +148,11 @@ field.addEventListener('click', e => {
   if(className.contains('carrot')) {
     count.textContent--
     e.target.remove();
+    if (count.textContent == 0) {
+      finishGame('win');
+    }
   } else {
-
+    finishGame('lose');
   }
 })
 
