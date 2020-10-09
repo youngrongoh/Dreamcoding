@@ -94,12 +94,12 @@ button {
 /* Game header */
 .game__header {
   flex-basis: 50%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   font-size: 3rem;
-  padding: 10vh 0;
+  padding-top: 1em;
   text-align: center;
   visibility: hidden;
 }
@@ -116,6 +116,7 @@ button {
   font-size: 0.8em;
   border: 4px solid #230901;
   transition: transform 0.3s ease-out;
+  margin-bottom: 0.3em;
 }
 
 .header__stop:hover {
@@ -131,6 +132,7 @@ button {
   background-color: #fafffc;
   border: 4px solid #230901;
   border-radius: 0.3em;
+  margin-bottom: 0.2em;
   cursor: default;
 }
 
@@ -148,6 +150,8 @@ button {
 /* Game field */
 .game__field {
   flex-basis: 50%;
+  width: 100%;
+  height: 100%;
   position: relative;
 }
 
@@ -181,18 +185,15 @@ button {
 }
 
 .pop-up__box {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 3em;
   width: 9em;
   height: 5em;
-  border-radius: 0.4em;
   text-align: center;
   font-size: 3rem;
-  padding: 1em 0;
   background: #23090190;
+  border-radius: 0.4em;
+  padding: 1em 0;
   margin: auto;
+  transform: translateY(160%);
 }
 
 .pop-up__replay {
